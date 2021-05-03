@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import styled from 'styled-components';
 
 // Components
@@ -6,12 +6,23 @@ import Header from './components/Header';
 import List from './components/List';
 import TextInput from './components/TextInput';
 import Button from './components/Button';
-
-const initialData = ['Milk', 'Eggs', 'Bread', 'Apples', 'Bananas'];
+import LoadingOverlay from './components/LoadingOverlay';
 
 const App = () => {
-	const [data, setData] = useState(initialData);
+	const [data, setData] = useState([]);
 	const [term, setTerm] = useState('');
+	const [isLoading, setIsLoading] = useState(true);
+	
+	useEffect(() => {
+		fetch('https://run.mocky.io/v3/ce74c1cb-fefe-4470-8dad-fa34fa65d84e').then(res => res.json()).then(res => {
+			setData(res.data);
+			
+			// timeout is just to see the loading overlay. remove it!
+			setTimeout(() => {
+				setIsLoading(false);
+			}, 3000);
+		});
+	}, []);
 	
 	const addItem = useCallback(() => {
 		setData(data.concat(term));
@@ -21,6 +32,7 @@ const App = () => {
 	
 	return (
 		<Container>
+			{ isLoading ? <LoadingOverlay /> : null }
 			<Navigation>
 				<Header label="My Groceries"/>
 				<TextInput onChange={handleInput}/>
