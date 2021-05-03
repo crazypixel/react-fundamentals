@@ -3,18 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+const App = () => (
+	<div>
+		<Header/>
+		<List/>
+	</div>
+);
+
+const Header = () => React.createElement('h1', null, 'My Groceries');
+
+const List = () => (
+	<ul>
+		<li>Milk</li>
+		<li>Eggs</li>
+		<li>Bread</li>
+		<li>Apples</li>
+	</ul>
+);
+
 ReactDOM.render(
-  React.createElement('div', null, [
-    React.createElement('h1', null, 'My Groceries'),
-  
-    React.createElement('ul', null, [
-      React.createElement('li', null, 'Milk'),
-      React.createElement('li', null, 'Eggs'),
-      React.createElement('li', null, 'Bread'),
-      React.createElement('li', null, 'Apples'),
-    ])
-  ]),
-  document.getElementById('root')
+	<App/>,
+	document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
