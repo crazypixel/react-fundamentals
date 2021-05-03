@@ -1,13 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import {useHistory} from 'react-router-dom';
 
-const ListItem = ({label}) => (
-	<Container>
-		<Inner>
-			{label}
-		</Inner>
-	</Container>
-);
+const ListItem = ({label}) => {
+	const history = useHistory();
+	return (
+		<Container onClick={() => history.push(`/items/${label}`)}>
+			<Inner>
+				{label}
+			</Inner>
+		</Container>
+	);
+};
 
 export default ListItem;
 
@@ -16,6 +20,12 @@ const Container = styled.div`
   height: calc((100vw - 40px) / 4);
   box-sizing: border-box;
   padding: 10px;
+  cursor: pointer;
+  transition: all 500ms;
+  
+  &:hover {
+  transform: scale(1.04);
+  }
 `;
 
 const Inner = styled.div`
