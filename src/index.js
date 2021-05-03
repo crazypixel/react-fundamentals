@@ -12,12 +12,11 @@ const App = () => (
 
 const Header = () => React.createElement('h1', null, 'My Groceries');
 
+const list = ['Milk', 'Eggs', 'Bread', 'Apples'];
+
 const List = () => (
 	<ul>
-		<li>Milk</li>
-		<li>Eggs</li>
-		<li>Bread</li>
-		<li>Apples</li>
+		{list.map(label => <li key={label}>{label}</li>)}
 	</ul>
 );
 
