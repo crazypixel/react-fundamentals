@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+// Passing label to the Header component
 const App = () => (
 	<div>
-		<Header/>
+		<Header label="My Groceries"/>
 		<List/>
 	</div>
 );
 
-const Header = () => React.createElement('h1', null, 'My Groceries');
+const Header = props => <h1>{props.label}</h1>;
 
 const list = ['Milk', 'Eggs', 'Bread', 'Apples'];
 
