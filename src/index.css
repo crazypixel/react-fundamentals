@@ -6,25 +6,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Open Sans', sans-serif;
 }
-
-.container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.card {
-  width: 500px;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 20px solid #2e2580;
-  font-size: 50px;
-  font-weight: 600;
-  text-align: center;
-  color: #2980ff;
-}

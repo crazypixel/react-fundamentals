@@ -1,5 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const Header = ({ label }) => <h1>{label}</h1>;
+const Header = ({ label }) => <Container>{label}</Container>;
 
 export default Header;
+
+const Container = styled.div`
+  font-size: 20px;
+  color: #fff;
+  font-weight: 600;
+`;
