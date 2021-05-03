@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const TextInput = () => <Input />;
+const TextInput = ({ onChange }) => <Input onChange={onChange} />;
 
 export default TextInput;
 

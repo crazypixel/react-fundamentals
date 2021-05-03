@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Button = ({ label }) => (
-	<Container>{label}</Container>
+const Button = ({ label, onClick }) => (
+	<Container onClick={onClick}>{label}</Container>
 );
 
 export default Button;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 import styled from 'styled-components';
 
 // Components
@@ -7,18 +7,27 @@ import List from './components/List';
 import TextInput from './components/TextInput';
 import Button from './components/Button';
 
-const data = ['Milk', 'Eggs', 'Bread', 'Apples', 'Bananas'];
+const initialData = ['Milk', 'Eggs', 'Bread', 'Apples', 'Bananas'];
 
 const App = () => {
+	const [data, setData] = useState(initialData);
+	const [term, setTerm] = useState('');
+	
+	const addItem = useCallback(() => {
+		setData(data.concat(term));
+	}, [term, data]);
+	
+	const handleInput = useCallback(e => setTerm(e.target.value), []);
+	
 	return (
 		<Container>
 			<Navigation>
-				<Header label="My Groceries" />
-				<TextInput/>
-				<Button label="Add Item" />
+				<Header label="My Groceries"/>
+				<TextInput onChange={handleInput}/>
+				<Button label="Add Item" onClick={addItem}/>
 			</Navigation>
-      
-      <List data={data} />
+			
+			<List data={data}/>
 		</Container>
 	);
 };
